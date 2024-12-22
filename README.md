@@ -4,7 +4,8 @@ Contained here are implementations of two types of Turing Machines: the classic 
 
 While equivalent in computational power, a two-tape Turing Machine can solve some problems far faster than a one-tape machine. One such problem is determining if two strings are identical: 
 the design of the two-tape machine lends itself to this job, while a classic machine must use a more complicated algorithm, which costs efficiency. The efficiency gap is wide: O(n^2) and O(n) time 
-complexities (where n is the length of one of the input strings) on exactly the same task.
+complexities (where n is the length of one of the input strings) on exactly the same task. Fitting a quadratic regression to the one-tape outputs from `run_timing.py` yield time = 3n^2 + 5n + 3,
+confirming the expectation that the one-tape machine would solve this problem in O(n^2) time.
 
 ![time_complexity_graph](assets/oneTape_vs_twoTape_timeComplexity.png)
 
