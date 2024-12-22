@@ -27,7 +27,7 @@ transitions = {
             },
         'q_5' : {
             '0' : ('q_5', '0', 'L'),
-            '1' : ('q_5', '0', 'L'),
+            '1' : ('q_5', '1', 'L'),
             'x' : ('q_5', 'x', 'L'),
             '$' : ('q_6', '$', 'R'),
         },
@@ -39,7 +39,7 @@ transitions = {
             }
         }
 
-input_string = "00011101"
+input_string = "010100011101"
 # process input string by prepending '$' and appending '_' (blank symbol)
 TM = OneTapeTuringMachine(['$'] + list(input_string) + ['_'], transitions)
 TM.display()
