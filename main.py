@@ -19,7 +19,7 @@ else:
     sys.exit(1)
 
 # process input string by prepending '$' and appending '_' (blank symbol)
-input_string = ['$'] + list(input_string) + ['_'] 
+input_string = ['$'] + list(input_string) + ['_']
 
 # construct the turing machine
 TM = OneTapeTuringMachine(input_string, transitions)
