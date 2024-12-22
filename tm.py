@@ -1,4 +1,3 @@
-from graphviz import Digraph
 from collections import defaultdict
 from abc import ABC, abstractmethod
 
@@ -31,6 +30,7 @@ class TuringMachine(ABC):
         Create a visual representation of the Turing machine's state diagram
         using graphviz.
         """
+        from graphviz import Digraph
         dot = Digraph()
         for node in self.transitions:
             dot.node(node)
