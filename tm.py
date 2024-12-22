@@ -1,4 +1,5 @@
 from graphviz import Digraph
+from collections import defaultdict
 
 class OneTapeTuringMachine():
     def __init__(self, tape, transitions):
@@ -29,8 +30,14 @@ class OneTapeTuringMachine():
         dot = Digraph()
         for node in self.transitions:
             dot.node(node)
+
+            # Group transitions that connect to the same nodes
+            next_state_description_dict = defaultdict(list)
             for tape_symbol, (next_state, new_symbol, direction) in self.transitions[node].items():
-                dot.edge(node, next_state, label=f"{node} -> {new_symbol}, {direction}", labeldistance='5')
+                next_state_description_dict[next_state].append(f"{tape_symbol} -> {new_symbol}, {direction}")
+
+            for next_state, description in next_state_description_dict.items():
+                dot.edge(node, next_state, label='\n'.join(description))
 
         dot.render('Turing Machine', format='png', cleanup=True)
 
