@@ -30,7 +30,7 @@ run `python run_timing.py` to run a time complexity experiment (the number of st
 
 On MacOS: `brew install graphviz`
 
-![one_tape_identical_decider](OneTape_IdenticalStrings_StateDiagram.png)
+![one_tape_identical_decider](assets/OneTape_IdenticalStrings_StateDiagram.png)
 
 
 
