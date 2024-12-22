@@ -32,5 +32,12 @@ On MacOS: `brew install graphviz`
 
 ![one_tape_identical_decider](assets/OneTape_IdenticalStrings_StateDiagram.png)
 
+# Why I made this
+
+I wanted to understand why a two-tape TM could be faster than a single-tape machine. As someone who had never taken the time to understand a two-tape machine beyond "it has 2 tapes", programming
+one was valuable. I was also very happy to see that my experiments confirmed the theoretical properties of the algorithms implemented, and designing/debugging the machines left me with a strong sense
+of why those results are the way they are.
+
+
 
 
