@@ -33,13 +33,14 @@ transitions = {
         },
         'q_6' : {
             '0' : ('q_6', '0', 'R'),
-            '1' : ('q_reject', '1', 'L'),
+            '1' : ('q_reject', '1', 'R'),
             'x' : ('q_6', 'x', 'R'),
-            '_' : ('q_accept', '_', 'L')
+            '_' : ('q_accept', '_', 'R')
             }
         }
 
 input_string = "00011101"
+# process input string by prepending '$' and appending '_' (blank symbol)
 TM = OneTapeTuringMachine(['$'] + list(input_string) + ['_'], transitions)
 TM.display()
 
@@ -52,20 +53,10 @@ while(TM.state != 'q_accept' and TM.state != 'q_reject'):
         TM.state = next_state
         TM.move_head(direction)
 
-    else:
+    else: # all undefined transitions go to qreject
         TM.state = 'q_reject'
 
     num_transitions += 1
     print(f'Transition number: {num_transitions}')
-    #print(f'Configuration: {TM.tape[: TM.head_position]}{TM.state}{TM.tape[TM.head_position :]}')
     TM.print_configuration()
     print('----------------------------------------')
-
-
-
-
-
-
-
-
-
