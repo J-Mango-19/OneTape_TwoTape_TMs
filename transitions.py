@@ -90,3 +90,23 @@ transitions_identical01s = {
         }
 
 
+transitions_identical_strings_twoTapeTM = {
+    'q_1': {
+        # Format: (symbol1, symbol2): (next_state, (new_symbol1, new_symbol2), (direction1, direction2))
+
+        # If symbols match, keep them unchanged and move right on both tapes
+        ('0', '0'): ('q_1', ('0', '0'), ('R', 'R')),  # Matching 0s
+        ('1', '1'): ('q_1', ('1', '1'), ('R', 'R')),  # Matching 1s
+        ('_', '_'): ('q_accept', ('_', '_'), ('S', 'S')),
+
+        # If symbols don't match, reject
+        ('0', '1'): ('q_reject', ('0', '1'), ('S', 'S')),
+        ('1', '0'): ('q_reject', ('1', '0'), ('S', 'S')),
+
+        # If one string ends before the other, reject
+        ('0', '_'): ('q_reject', ('0', '_'), ('S', 'S')),
+        ('1', '_'): ('q_reject', ('1', '_'), ('S', 'S')),
+        ('_', '0'): ('q_reject', ('_', '0'), ('S', 'S')),
+        ('_', '1'): ('q_reject', ('_', '1'), ('S', 'S')),
+    }
+}
