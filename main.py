@@ -16,7 +16,7 @@ def run_two_tape(algorithm):
     res = input("Save a png image of the TM state diagram in this directory? Requires graphviz library. [Y/n]: ")
     if res.lower() == 'y':
         print("saving png image")
-        TM.display()
+        TM.display("TwoTape_IdenticalStrings_StateDiagram")
 
     # run the turing machine
     num_transitions = 0
@@ -58,7 +58,10 @@ def run_one_tape(algorithm):
     res = input("Save a png image of the TM state diagram in this directory? Requires graphviz library. [Y/n]: ")
     if res.lower() == 'y':
         print("saving png image")
-        TM.display()
+        if algorithm == 'test_identical':
+            TM.display("OneTape_IdenticalStrings_StateDiagram")
+        elif algorithm == 'test_equal_amount':
+            TM.display("OneTape_EqualTypeStrings_StateDiagram")
 
     # run the Turing Machine
     num_transitions = 0

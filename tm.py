@@ -26,7 +26,7 @@ class TuringMachine(ABC):
     def step(self):
         pass
 
-    def display(self):
+    def display(self, title):
         """
         Create a visual representation of the Turing machine's state diagram
         using graphviz.
@@ -40,7 +40,7 @@ class TuringMachine(ABC):
                 next_state_description_dict[next_state].append(f"{tape_symbol} -> {new_symbol}, {direction}")
             for next_state, description in next_state_description_dict.items():
                 dot.edge(node, next_state, label='\n'.join(description))
-        dot.render('Turing Machine', format='png', cleanup=True)
+        dot.render(f'assets/{title}', format='png', cleanup=True)
 
 
 class OneTapeTuringMachine(TuringMachine):
