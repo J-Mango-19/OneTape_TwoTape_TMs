@@ -5,7 +5,8 @@ transitions = {
             '0' : ('q_2', 'x', 'R'),
             '1' : ('q_1', '1', 'R'),
             'x' : ('q_1', 'x', 'R'),
-            '$' : ('q_1', '$', 'R')
+            '$' : ('q_1', '$', 'R'),
+            '_' : ('q_5', '_', 'L')
                    },
         'q_2' : {
             '0' : ('q_2', '0', 'L'),
@@ -32,14 +33,17 @@ transitions = {
         },
         'q_6' : {
             '0' : ('q_6', '0', 'R'),
-            '1' : ('q_reject' 'q', 'L'),
+            '1' : ('q_reject', '1', 'L'),
             'x' : ('q_6', 'x', 'R'),
             '_' : ('q_accept', '_', 'L')
             }
         }
 
-TM = OneTapeTuringMachine("0101", transitions)
+input_string = "00011101"
+TM = OneTapeTuringMachine(['$'] + list(input_string) + ['_'], transitions)
+TM.display()
 
+num_transitions = 0
 while(TM.state != 'q_accept' and TM.state != 'q_reject'):
     current_symbol = TM.read_tape()
     if TM.state in TM.transitions and current_symbol in TM.transitions[TM.state]:
@@ -51,7 +55,11 @@ while(TM.state != 'q_accept' and TM.state != 'q_reject'):
     else:
         TM.state = 'q_reject'
 
-    print(TM.state)
+    num_transitions += 1
+    print(f'Transition number: {num_transitions}')
+    #print(f'Configuration: {TM.tape[: TM.head_position]}{TM.state}{TM.tape[TM.head_position :]}')
+    TM.print_configuration()
+    print('----------------------------------------')
 
 
 

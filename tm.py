@@ -1,3 +1,5 @@
+from graphviz import Digraph
+
 class OneTapeTuringMachine():
     def __init__(self, tape, transitions):
         self.tape = tape
@@ -20,6 +22,20 @@ class OneTapeTuringMachine():
             if self.head_position > 0: # prevent from going off end of tape
                 self.head_position -= 1
 
+    def print_configuration(self):
+        print(f'Configuration: {''.join(self.tape[: self.head_position])}{self.state}{''.join(self.tape[self.head_position :])}')
+
+    def display(self):
+        dot = Digraph()
+        for node in self.transitions:
+            dot.node(node)
+            for tape_symbol, (next_state, new_symbol, direction) in self.transitions[node].items():
+                dot.edge(node, next_state, label=f"{node} -> {new_symbol}, {direction}", labeldistance='5')
+
+        dot.render('Turing Machine', format='png', cleanup=True)
+
+
+
 """
 transitions = {
         cur_state : {
@@ -27,7 +43,6 @@ transitions = {
                       tape_symbol : (next_state, new_symbol, direction)
                       }}
 """
-
 
 transitions = {
         'q_1' : {
